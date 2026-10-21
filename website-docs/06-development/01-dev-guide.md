@@ -337,7 +337,7 @@ curl -i http://localhost:8080/swagger/doc.json
 
 ### 数据库与迁移调试 {#_6-3-数据库与迁移调试}
 
-- `AUTO_MIGRATE=false` 可关闭启动时自动迁移；`AUTO_RECOVER_DIRTY`（默认开启，设为 `false` 关闭）控制 dirty state 自动恢复（`internal/container/container.go`）。迁移失败只告警不阻断启动，注意看启动日志里的 `Database migration failed`。
+- `AUTO_MIGRATE=false` 可关闭启动时自动迁移；`AUTO_RECOVER_DIRTY`（默认开启，设为 `false` 关闭）控制 dirty state 自动恢复。默认迁移失败只告警并继续启动；`AUTO_MIGRATE_REQUIRED=true` 会让迁移失败阻断启动。Docker 镜像和 Compose 默认要求迁移成功。
 - `make migrate-version` 快速确认 schema 版本。
 
 ### LLM 链路观测（Langfuse） {#_6-4-llm-链路观测-langfuse}

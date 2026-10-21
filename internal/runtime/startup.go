@@ -80,6 +80,7 @@ var startupEnvVars = []envVarSpec{
 	// Runtime
 	{name: "GIN_MODE"},
 	{name: "AUTO_MIGRATE"},
+	{name: "AUTO_MIGRATE_REQUIRED"},
 	// Database
 	{name: "DB_DRIVER"},
 	{name: "DB_HOST"},

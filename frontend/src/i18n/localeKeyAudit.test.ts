@@ -103,6 +103,7 @@ const RUNTIME_QUEUE_NAMES = [
   'multimodal',
   'graph',
   'question',
+  'questionBank',
   'wiki',
 ] as const
 

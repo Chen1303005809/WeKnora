@@ -58,6 +58,7 @@ opt := &asynq.RedisClientOpt{
 | `image:multimodal` | `TypeImageMultimodal` | 图片 OCR + VLM Caption | `multimodal` |
 | `chunk:extract` | `TypeChunkExtract` | 图谱实体/关系抽取（按 chunk） | `graph` |
 | `question:generation` | `TypeQuestionGeneration` | 问题生成（按 chunk 批次 fan-out） | `question` |
+| `question_bank:generation` | `TypeQuestionBankGeneration` | 从所选知识库生成学习题库草稿 | `question` |
 | `datasource:sync` | `TypeDataSourceSync` | 数据源同步 | `sync` |
 | `faq:import` | `TypeFAQImport` | FAQ 导入（含 dry run） | `low`（maintenance） |
 | `kb:clone` | `TypeKBClone` | 知识库复制 | `low` |

@@ -106,6 +106,12 @@ FROM debian:12.12-slim
 
 WORKDIR /app
 
+# The database is available only when the container starts. Apply bundled
+# migrations from the application before serving traffic, and fail startup if
+# the schema cannot be brought up to date.
+ENV AUTO_MIGRATE=true \
+    AUTO_MIGRATE_REQUIRED=true
+
 ARG APK_MIRROR_ARG
 
 # Pairing derives the gateway URL from the user's page origin by default.
@@ -153,6 +159,7 @@ COPY --from=builder /app/yanyiwu/ /go/pkg/mod/github.com/yanyiwu/
 # Copy the binary from the builder stage
 COPY --from=builder /app/config ./config
 COPY --from=builder /app/scripts ./scripts
+# The app applies these SQL migrations at container startup, after the DB is available.
 COPY --from=builder /app/migrations ./migrations
 COPY --from=builder /app/dataset/samples ./dataset/samples
 COPY --from=builder /root/.duckdb /home/appuser/.duckdb
